@@ -27,7 +27,7 @@ public class Search_In_Sorted_Rotated_Array
             }
         }
         else {
-            if(key >= arr[mid] && key<= arr[high]) {
+            if(key >= arr[mid] && key <= arr[high]) {
                 return search_util(arr, key, mid+1, high);
             }
             else {
@@ -40,6 +40,6 @@ public class Search_In_Sorted_Rotated_Array
     {
         Search_In_Sorted_Rotated_Array obj = new Search_In_Sorted_Rotated_Array();   
         int arr[] = {5,6,7,8,2,3,4};
-        System.out.println(obj.search(arr, 4));
+        System.out.println(obj.search(arr, 2));
     }
 };
