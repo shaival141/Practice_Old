@@ -4,48 +4,48 @@ import java.util.*;
 
 public class Count_Inversions
 {
-    int merge(int[] arr, int l, int m, int r)
+    static long merge(long[] arr, long l, long m, long r)
     {
-        int cnt=0;
-        int n1=m-l+1;
-        int n2=r-m;
-        int[] L = new int[n1];
-        int[] R = new int[n2];
-        for(int i=0;i<n1;i++)
-            L[i]=arr[l+i];
-        for(int i=0;i<n2;i++)
-            R[i]=arr[m+1+i];
-        int i=0, j=0;
-        int k=l;
+        long cnt=0;
+        long n1=m-l+1;
+        long n2=r-m;
+        long[] L = new long[(int)n1];
+        long[] R = new long[(int)n2];
+        for(long i=0;i<n1;i++)
+            L[(int)i]=arr[(int)(l+i)];
+        for(long i=0;i<n2;i++)
+            R[(int)i]=arr[(int)(m+1+i)];
+        long i=0, j=0;
+        long k=l;
         while(i<n1 && j<n2)
         {
-            if(L[i]<=R[j])
+            if(L[(int)i]<=R[(int)j])
             {
-                arr[k++]=L[i++];
+                arr[(int)k++]=L[(int)i++];
             }
             else
             {
-                arr[k++]=L[j++];
+                arr[(int)k++]=L[(int)j++];
                 cnt+=m-i+1;
             }
         }
         while(i<n1)
         {
-            arr[k++]=L[i++];
+            arr[(int)k++]=L[(int)i++];
         }
         while(j<n2)
         {
-            arr[k++]=R[j++];
+            arr[(int)k++]=R[(int)j++];
         }
         return cnt;
     }
 
-    int sort(int[] arr,int l, int r)
+    static long sort(long[] arr,long l, long r)
     {
-        int cnt=0;
+        long cnt=0;
         if(l<r)
         {
-            int m=(l+r)/2;
+            long m=(l+r)/2;
             cnt+=sort(arr,l,m);
             cnt+=sort(arr,m+1,r);
 
@@ -54,15 +54,23 @@ public class Count_Inversions
         return cnt;
     }
 
-    int count_inversions(int[] arr)
+    static long count_inversions(long[] arr)
     {
         return sort(arr,0,arr.length-1);
     }
 
     public static void main(String[] args)
     {
-        Count_Inversions cObj = new Count_Inversions();
-        int[] arr={1,3,5,2,4,6};
-        System.out.println(cObj.count_inversions(arr));
+        try {
+            Scanner s = new Scanner(new File("Input.txt"));
+            long[] arr = new long[100000];
+            for(long i=0;i<100000;i++) {
+                arr[(int)i]=s.nextLong();
+            }
+            System.out.println(count_inversions(arr));
+        }
+        catch(FileNotFoundException e) {
+            System.out.println("Input file not found !!");
+        }
     }
 }
