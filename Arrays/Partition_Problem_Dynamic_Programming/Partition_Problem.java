@@ -33,7 +33,7 @@ public class Partition_Problem
 
     public static void main(String args[])
     {
-        int arr[] = {3, 1, 1, 2, 2, 222};
+        int arr[] = {3, 1, 1, 2, 2, 7};
         System.out.println(isPartitionPossible(arr));
     }
 }
